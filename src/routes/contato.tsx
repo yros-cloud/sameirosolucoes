@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { WHATSAPP_URL } from "@/components/site/WhatsAppFab";
-import { Mail, MapPin, Phone, MessageCircle, Instagram, Facebook } from "lucide-react";
+import { CONTACT } from "@/lib/site-data";
+import { Mail, MapPin, Phone, MessageCircle, Instagram, Facebook, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
       { title: "Contato — SAMEIRO Florianópolis" },
-      { name: "description", content: "Fale com a SAMEIRO. Atendimento por WhatsApp, telefone e e-mail. Florianópolis e região." },
+      { name: "description", content: "Fale com a SAMEIRO. Atendimento por WhatsApp, telefone e e-mail. Rod. José Carlos Daux, 1000 — Florianópolis/SC." },
+      { property: "og:title", content: "Contato — SAMEIRO" },
+      { property: "og:description", content: "Solicite seu orçamento. Atendemos toda a Grande Florianópolis." },
       { property: "og:url", content: "/contato" },
     ],
     links: [{ rel: "canonical", href: "/contato" }],
@@ -29,28 +32,35 @@ function ContatoPage() {
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-[oklch(0.69_0.16_162)]/15 text-[oklch(0.55_0.16_162)]"><MessageCircle className="h-5 w-5" /></span>
               <div>
                 <div className="font-semibold">WhatsApp</div>
-                <div className="text-sm text-muted-foreground">(48) 9 9999-9999</div>
+                <div className="text-sm text-muted-foreground">{CONTACT.phoneDisplay}</div>
               </div>
             </a>
-            <a href="tel:+554899999999" className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 hover-lift">
+            <a href={CONTACT.phoneHref} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 hover-lift">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary"><Phone className="h-5 w-5" /></span>
               <div>
                 <div className="font-semibold">Telefone</div>
-                <div className="text-sm text-muted-foreground">(48) 9 9999-9999</div>
+                <div className="text-sm text-muted-foreground">{CONTACT.phoneDisplay}</div>
               </div>
             </a>
-            <a href="mailto:contato@sameirosolucoes.com.br" className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 hover-lift">
+            <a href={CONTACT.mailHref} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 hover-lift">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary"><Mail className="h-5 w-5" /></span>
               <div>
                 <div className="font-semibold">E-mail</div>
-                <div className="text-sm text-muted-foreground">contato@sameirosolucoes.com.br</div>
+                <div className="text-sm text-muted-foreground">{CONTACT.email}</div>
+              </div>
+            </a>
+            <a href={CONTACT.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 hover-lift">
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary"><MapPin className="h-5 w-5" /></span>
+              <div>
+                <div className="font-semibold">Endereço</div>
+                <div className="text-sm text-muted-foreground">{CONTACT.addressLine}</div>
               </div>
             </a>
             <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary"><MapPin className="h-5 w-5" /></span>
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary"><Clock className="h-5 w-5" /></span>
               <div>
-                <div className="font-semibold">Atendimento</div>
-                <div className="text-sm text-muted-foreground">Florianópolis · Rio Vermelho e região</div>
+                <div className="font-semibold">Horário</div>
+                <div className="text-sm text-muted-foreground">Seg a Sáb · 08h às 18h</div>
               </div>
             </div>
             <div className="flex gap-2 pt-2">
@@ -72,8 +82,8 @@ function ContatoPage() {
             <p className="mt-1 text-sm text-muted-foreground">Preencha que retornamos pelo WhatsApp.</p>
             <div className="mt-6 space-y-4">
               <Field label="Nome" type="text" placeholder="Seu nome" />
-              <Field label="WhatsApp" type="tel" placeholder="(48) 9 9999-9999" />
-              <Field label="Bairro / Cidade" type="text" placeholder="Rio Vermelho, Florianópolis" />
+              <Field label="WhatsApp" type="tel" placeholder="(48) 98426-0224" />
+              <Field label="Bairro / Cidade" type="text" placeholder="Florianópolis" />
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-widest text-muted-foreground">O que você precisa?</label>
                 <textarea
@@ -87,6 +97,16 @@ function ContatoPage() {
               </button>
             </div>
           </form>
+
+          <div className="mt-8 overflow-hidden rounded-3xl border border-border shadow-card">
+            <iframe
+              title="Mapa SAMEIRO"
+              src="https://www.google.com/maps?q=Rodovia+Jos%C3%A9+Carlos+Daux+1000+Florian%C3%B3polis&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="h-72 w-full border-0"
+            />
+          </div>
         </Reveal>
       </div>
     </section>
