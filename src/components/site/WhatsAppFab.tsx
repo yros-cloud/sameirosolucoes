@@ -1,7 +1,6 @@
-const PHONE = "5548999999999"; // TODO: trocar pelo número real
-const MESSAGE = "Olá! Gostaria de solicitar um orçamento.";
+import { WHATSAPP_URL } from "@/lib/site-data";
 
-export const WHATSAPP_URL = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+export { WHATSAPP_URL };
 
 export function WhatsAppFab() {
   return (
