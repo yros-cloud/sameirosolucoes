@@ -61,10 +61,10 @@ export function SiteHeader() {
                 )}
                 activeProps={{
                   className: cn(
-                    "relative rounded-full px-3.5 py-2 text-sm font-medium",
+                    "relative rounded-full px-3.5 py-2 text-sm font-semibold",
                     light
-                      ? "text-[oklch(0.2_0.04_235)] bg-white"
-                      : "text-foreground bg-secondary",
+                      ? "!text-[oklch(0.2_0.04_235)] bg-white shadow-sm"
+                      : "!text-primary bg-secondary",
                   ),
                 }}
               >
