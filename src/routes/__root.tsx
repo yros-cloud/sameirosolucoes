@@ -97,6 +97,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Segurança, automação e soluções inteligentes para residências e empresas em Florianópolis.",
       },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "SAMEIRO — Tecnologia que protege" },
+      { name: "description", content: "SAMEIRO offers smart home solutions, including installation and automation for security, convenience, and connectivity." },
+      { property: "og:description", content: "SAMEIRO offers smart home solutions, including installation and automation for security, convenience, and connectivity." },
+      { name: "twitter:description", content: "SAMEIRO offers smart home solutions, including installation and automation for security, convenience, and connectivity." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b90b371e-06fe-434a-ba1e-738492cdaaed/id-preview-105f9347--038fdce5-7cd8-4867-8be0-df1530689a14.lovable.app-1782475510847.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b90b371e-06fe-434a-ba1e-738492cdaaed/id-preview-105f9347--038fdce5-7cd8-4867-8be0-df1530689a14.lovable.app-1782475510847.png" },
     ],
     links: [
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
