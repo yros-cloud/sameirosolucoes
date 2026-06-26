@@ -4,6 +4,7 @@ interface LogoProps {
   className?: string;
   variant?: "horizontal" | "vertical" | "icon" | "mono";
   showTagline?: boolean;
+  tone?: "default" | "light";
 }
 
 /**
@@ -63,21 +64,23 @@ export function BrandMark({ className, tone = "gradient" }: { className?: string
   );
 }
 
-export function Logo({ className, variant = "horizontal", showTagline = false }: LogoProps) {
-  const tone = variant === "mono" ? "mono" : "gradient";
+export function Logo({ className, variant = "horizontal", showTagline = false, tone: toneProp }: LogoProps) {
+  const markTone = variant === "mono" ? "mono" : toneProp === "light" ? "white" : "gradient";
+  const wordClass = toneProp === "light" ? "text-white" : "text-foreground";
+  const tagClass = toneProp === "light" ? "text-white/70" : "text-muted-foreground";
 
   if (variant === "icon") {
-    return <BrandMark className={className} tone={tone} />;
+    return <BrandMark className={className} tone={markTone} />;
   }
 
   if (variant === "vertical") {
     return (
       <div className={cn("flex flex-col items-center gap-2", className)}>
-        <BrandMark className="h-12 w-12" tone={tone} />
+        <BrandMark className={cn("h-12 w-12", toneProp === "light" && "text-white")} tone={markTone} />
         <div className="flex flex-col items-center leading-none">
-          <span className="font-display text-2xl font-semibold tracking-[0.22em]">SAMEIRO</span>
+          <span className={cn("font-display text-2xl font-semibold tracking-[0.22em]", wordClass)}>SAMEIRO</span>
           {showTagline && (
-            <span className="mt-1.5 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+            <span className={cn("mt-1.5 text-[10px] uppercase tracking-[0.32em]", tagClass)}>
               Soluções Inteligentes
             </span>
           )}
@@ -88,11 +91,11 @@ export function Logo({ className, variant = "horizontal", showTagline = false }:
 
   return (
     <div className={cn("inline-flex items-center gap-2.5", className)}>
-      <BrandMark className="h-8 w-8" tone={tone} />
+      <BrandMark className={cn("h-8 w-8", toneProp === "light" && "text-white")} tone={markTone} />
       <div className="flex flex-col leading-none">
-        <span className="font-display text-[1.15rem] font-semibold tracking-[0.22em]">SAMEIRO</span>
+        <span className={cn("font-display text-[1.15rem] font-semibold tracking-[0.22em]", wordClass)}>SAMEIRO</span>
         {showTagline && (
-          <span className="mt-1 text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
+          <span className={cn("mt-1 text-[9px] uppercase tracking-[0.3em]", tagClass)}>
             Soluções Inteligentes
           </span>
         )}
