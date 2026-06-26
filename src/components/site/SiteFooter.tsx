@@ -34,9 +34,9 @@ export function SiteFooter() {
             Contato
           </h4>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-start gap-2.5"><Phone className="mt-0.5 h-4 w-4" /> (48) 9 9999-9999</li>
+            <li className="flex items-start gap-2.5"><Phone className="mt-0.5 h-4 w-4" /> (48) 98426-0224</li>
             <li className="flex items-start gap-2.5"><Mail className="mt-0.5 h-4 w-4" /> contato@sameirosolucoes.com.br</li>
-            <li className="flex items-start gap-2.5"><MapPin className="mt-0.5 h-4 w-4" /> Florianópolis · Rio Vermelho</li>
+            <li className="flex items-start gap-2.5"><MapPin className="mt-0.5 h-4 w-4" /> Rod. José Carlos Daux, 1000 · Florianópolis/SC</li>
           </ul>
           <div className="mt-4 flex gap-2">
             <a aria-label="Instagram" href="#" className="grid h-10 w-10 place-items-center rounded-full bg-white/5 hover:bg-white/10"><Instagram className="h-4 w-4" /></a>

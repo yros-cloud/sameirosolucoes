@@ -530,7 +530,7 @@ function ContactSection() {
               </div>
               <div className="flex flex-col gap-3">
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-6 py-4 text-center text-sm font-semibold text-[oklch(0.2_0.04_235)] transition-all hover:-translate-y-0.5">
-                  WhatsApp · (48) 9 9999-9999
+                  WhatsApp · (48) 98426-0224
                 </a>
                 <Link to="/contato" className="rounded-full border border-white/30 px-6 py-4 text-center text-sm font-semibold hover:bg-white/10">
                   Formulário de orçamento
