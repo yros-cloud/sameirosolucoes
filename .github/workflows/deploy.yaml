@@ -1,0 +1,67 @@
+# Deploys the prerendered static site to GitHub Pages.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Resolve Pages base path
+        shell: bash
+        env:
+          CONFIGURED_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
+        run: |
+          if [[ -n "${CONFIGURED_BASE_PATH}" ]]; then
+            base="${CONFIGURED_BASE_PATH}"
+          else
+            base="/"
+          fi
+
+          [[ "${base}" == /* ]] || base="/${base}"
+          [[ "${base}" == */ ]] || base="${base}/"
+
+          echo "VITE_BASE_PATH=${base}" >> "${GITHUB_ENV}"
+      - name: Build
+        run: bun run build
+      - name: Prepare Pages artifact
+        shell: bash
+        env:
+          CUSTOM_DOMAIN: ${{ vars.PAGES_CUSTOM_DOMAIN }}
+        run: |
+          cp dist/client/index.html dist/client/404.html
+          touch dist/client/.nojekyll
+
+          if [[ -n "${CUSTOM_DOMAIN}" ]]; then
+            printf '%s\n' "${CUSTOM_DOMAIN}" > dist/client/CNAME
+          fi
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist/client'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
