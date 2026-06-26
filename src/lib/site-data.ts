@@ -104,3 +104,23 @@ export const PRODUCT_CATEGORIES = [
   { slug: "alexa", title: "Alexa", desc: "Echo, Echo Dot e dispositivos compatíveis." },
   { slug: "google-home", title: "Google Home", desc: "Nest Hub, Mini e ecossistema Google." },
 ];
+
+// ===== Contact info =====
+export const CONTACT = {
+  phoneDisplay: "(48) 98426-0224",
+  phoneIntl: "+55 48 98426-0224",
+  phoneHref: "tel:+5548984260224",
+  whatsappNumber: "5548984260224",
+  whatsappMessage: "Olá! Gostaria de solicitar um orçamento.",
+  email: "contato@sameirosolucoes.com.br",
+  mailHref: "mailto:contato@sameirosolucoes.com.br",
+  addressLine: "Rodovia José Carlos Daux, 1000 — Florianópolis/SC",
+  addressStreet: "Rodovia José Carlos Daux, 1000",
+  city: "Florianópolis",
+  region: "SC",
+  postal: "88050-001",
+  country: "BR",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Rodovia+Jos%C3%A9+Carlos+Daux+1000+Florian%C3%B3polis",
+} as const;
+
+export const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
