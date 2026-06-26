@@ -76,7 +76,7 @@ function ServicoDetalhe() {
             </p>
             <div className="mt-6 border-t border-border pt-5 text-xs uppercase tracking-widest text-muted-foreground">Palavras-chave</div>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              {service.keywords.map(k => (
+              {service.keywords.map((k: string) => (
                 <span key={k} className="rounded-full bg-secondary px-3 py-1 text-xs">{k}</span>
               ))}
             </div>
